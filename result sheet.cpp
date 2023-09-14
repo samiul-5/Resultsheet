@@ -3,7 +3,7 @@
 using namespace std;
 
 class Course {
-protected:
+protected:			//encapsulation
     string courseName;
     string teacherName;
     double obtainMarks;
@@ -12,9 +12,13 @@ public:
     Course(const string& name, const string& teacher, double marks)
         : courseName(name), teacherName(teacher), obtainMarks(marks) {}
 
+// Abstruction
+
     virtual void display() = 0;
     virtual double calculatePoints() = 0;
 };
+
+//inheritance
 
 class ObjectOrientedProgram : public Course {
 public:
@@ -32,10 +36,14 @@ public:
     }
 };
 
+//inheritance
+
 class DataStructure : public Course {
 public:
     DataStructure()
-        : Course("Data Structure", "Sezan Mahmud", 3.75) {}
+      : Course("Data Structure", "Sezan Mahmud", 3.75) {}
+
+//polymorphism
 
     void display() {
         cout << "Course name: " << courseName << "\n";
@@ -48,10 +56,15 @@ public:
     }
 };
 
+
+//inheritance
+
 class DiscreteMath : public Course {
 public:
     DiscreteMath()
          :Course("Discrete Math", "Rumana Khatun", 4.00) {}
+
+//polymorphism
 
     void display() override {
         cout << "Course name: " << courseName << "\n";
@@ -64,10 +77,13 @@ public:
     }
 };
 
+//inheritance
+
 class Math : public Course {
 public:
     Math()
         : Course("Math", "Fatema Khatun", 3.00) {}
+//polymorphism
 
     void display() override {
         cout << "Course name: " << courseName << "\n";
@@ -81,13 +97,16 @@ public:
 };
 
 class Student {
-private:
+private:			//encapsulation
     string studentName;
     int id;
     double cgpa;
    vector<Course*> courses;
 
 public:
+
+//consreuctor
+
     Student(const string& name, int studentId, double studentCgpa)
         : studentName(name), id(studentId), cgpa(studentCgpa) {}
 
@@ -118,6 +137,8 @@ public:
             cout << "Bad Student\n";
         }
     }
+
+//destructor
 
     ~Student() {
         for (Course* course : courses) {
